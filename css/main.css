@@ -1,0 +1,543 @@
+@charset "UTF-8";
+/* Reset and base styles */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  min-height: 100vh;
+}
+
+body::after, body::before {
+  color: white;
+  font-size: 120px;
+  font-weight: 1000;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translatey(-50%);
+          transform: translatey(-50%);
+  position: absolute;
+  z-index: 10;
+}
+
+body.animation::after, body.animation::before {
+  -webkit-animation: up-down 2s ease-in-out 0.5s both;
+          animation: up-down 2s ease-in-out 0.5s both;
+}
+
+body.two-blue::after {
+  content: "Blue";
+}
+
+body.one-red::after {
+  content: "Red";
+}
+
+body::before {
+  content: "Turn";
+  right: 0;
+}
+
+.two-blue {
+  background-color: rgba(9, 30, 217, 0.692) !important;
+  -webkit-transition: 1.3s;
+  transition: 1.3s;
+}
+
+.one-red {
+  background-color: rgba(205, 92, 92, 0.715) !important;
+  -webkit-transition: 1.3s;
+  transition: 1.3s;
+}
+
+/* Game container */
+.container.blue::after {
+  content: "Blue Won";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(9, 30, 217, 0.733);
+  font-weight: 900;
+  font-size: 140px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.container.red::after {
+  content: "Red Won";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(205, 92, 92, 0.733);
+  font-weight: 900;
+  font-size: 140px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.container .game {
+  /* Remove absolute positioning - using flex centering instead */
+  display: -ms-grid;
+  display: grid;
+  -webkit-transform: translate(-50%, -44%);
+          transform: translate(-50%, -44%);
+  /* Connect Four standard: 7 rows × 6 columns */
+  -ms-grid-columns: 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  -ms-grid-rows: 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr min(1vw, 10px) 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  /* Perfect circle aspect ratio for spots */
+  /* Responsive gap */
+  gap: min(1vw, 10px);
+  /* Inner spacing */
+  padding: min(2vw, 20px);
+}
+
+.container .game > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.container .game > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+.container .game > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+
+.container .game > *:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+}
+
+.container .game > *:nth-child(5) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 9;
+}
+
+.container .game > *:nth-child(6) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 11;
+}
+
+.container .game > *:nth-child(7) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 13;
+}
+
+.container .game > *:nth-child(8) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+
+.container .game > *:nth-child(9) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+}
+
+.container .game > *:nth-child(10) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 5;
+}
+
+.container .game > *:nth-child(11) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 7;
+}
+
+.container .game > *:nth-child(12) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 9;
+}
+
+.container .game > *:nth-child(13) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 11;
+}
+
+.container .game > *:nth-child(14) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 13;
+}
+
+.container .game > *:nth-child(15) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+}
+
+.container .game > *:nth-child(16) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+}
+
+.container .game > *:nth-child(17) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 5;
+}
+
+.container .game > *:nth-child(18) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 7;
+}
+
+.container .game > *:nth-child(19) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 9;
+}
+
+.container .game > *:nth-child(20) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 11;
+}
+
+.container .game > *:nth-child(21) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 13;
+}
+
+.container .game > *:nth-child(22) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 1;
+}
+
+.container .game > *:nth-child(23) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 3;
+}
+
+.container .game > *:nth-child(24) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 5;
+}
+
+.container .game > *:nth-child(25) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 7;
+}
+
+.container .game > *:nth-child(26) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 9;
+}
+
+.container .game > *:nth-child(27) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 11;
+}
+
+.container .game > *:nth-child(28) {
+  -ms-grid-row: 7;
+  -ms-grid-column: 13;
+}
+
+.container .game > *:nth-child(29) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 1;
+}
+
+.container .game > *:nth-child(30) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 3;
+}
+
+.container .game > *:nth-child(31) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 5;
+}
+
+.container .game > *:nth-child(32) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 7;
+}
+
+.container .game > *:nth-child(33) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 9;
+}
+
+.container .game > *:nth-child(34) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 11;
+}
+
+.container .game > *:nth-child(35) {
+  -ms-grid-row: 9;
+  -ms-grid-column: 13;
+}
+
+.container .game > *:nth-child(36) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 1;
+}
+
+.container .game > *:nth-child(37) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 3;
+}
+
+.container .game > *:nth-child(38) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 5;
+}
+
+.container .game > *:nth-child(39) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 7;
+}
+
+.container .game > *:nth-child(40) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 9;
+}
+
+.container .game > *:nth-child(41) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 11;
+}
+
+.container .game > *:nth-child(42) {
+  -ms-grid-row: 11;
+  -ms-grid-column: 13;
+}
+
+/* Spots - Perfect circles */
+.container .game .spot, .selectors .selector, .coin {
+  /* Make it a perfect circle */
+  border-radius: 50%;
+  /* Ensure aspect ratio is 1:1 */
+  aspect-ratio: 1/1;
+  /* Full width of grid cell */
+  width: 100%;
+  border: 2px solid black;
+  /* Base background */
+  background-color: rgb(51, 65, 85); /* slate-700 */
+  /* Shadow for 3D effect */
+}
+
+.container .game .spot.red {
+  background-color: indianred;
+}
+
+.container .game .spot.blue {
+  background-color: rgb(9, 30, 217);
+}
+
+.selectors {
+  width: 100%;
+  top: -77px;
+}
+
+.selectors .selector {
+  background-color: transparent;
+}
+
+.selectors .selector .coin {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s ease;
+  transition: background-color 0.3s, -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.3s;
+  transition: transform 0.2s ease, background-color 0.3s, -webkit-transform 0.2s ease;
+}
+
+.coin.red {
+  background-color: indianred !important;
+}
+
+.coin.blue {
+  background-color: rgb(9, 30, 217) !important;
+}
+
+.reset {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #1e293b;
+  border: 3px solid white;
+  cursor: pointer;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  font-size: 32px;
+}
+.reset:hover {
+  -webkit-transform: scale(1.1) rotate(-180deg);
+          transform: scale(1.1) rotate(-180deg);
+  background-color: #334155;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 15px 30px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.reset:active {
+  -webkit-transform: scale(0.95) rotate(-180deg);
+          transform: scale(0.95) rotate(-180deg);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container .game {
+    width: 95vw;
+    max-width: 500px;
+    gap: min(1.5vw, 8px);
+    padding: min(3vw, 15px);
+  }
+  .reset {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 532px) {
+  body::after,
+  body::before {
+    font-size: 60px;
+    font-weight: 900;
+    -webkit-transform: translateX(40%);
+            transform: translateX(40%);
+    right: 50%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: absolute;
+  }
+  body.animation::after, body.animation::before {
+    -webkit-animation: up-down-mob 2s ease-in-out 0.5s both;
+            animation: up-down-mob 2s ease-in-out 0.5s both;
+  }
+  body::after {
+    top: 0;
+  }
+  body::before {
+    top: 86%;
+  }
+  /* Also need to update the container game styles for mobile */
+}
+@media (max-width: 480px) {
+  .container .game {
+    gap: min(2vw, 6px);
+    padding: min(4vw, 12px);
+  }
+  .selectors {
+    top: -50px;
+  }
+}
+/* For very large screens */
+@media (min-width: 1920px) {
+  .container .game {
+    max-width: 1200px;
+    gap: 15px;
+    padding: 25px;
+  }
+}
+@-webkit-keyframes up-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) scale(0.5);
+            transform: translateY(-100%) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateY(-50%) scale(1);
+            transform: translateY(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(0%) scale(0.5);
+            transform: translateY(0%) scale(0.5);
+  }
+}
+@keyframes up-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%) scale(0.5);
+            transform: translateY(-100%) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateY(-50%) scale(1);
+            transform: translateY(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(0%) scale(0.5);
+            transform: translateY(0%) scale(0.5);
+  }
+}
+@-webkit-keyframes up-down-mob {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateX(50%) translateY(0);
+            transform: translateX(50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+@keyframes up-down-mob {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateX(50%) translateY(0);
+            transform: translateX(50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}

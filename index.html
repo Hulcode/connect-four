@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/Normalization.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Connect Four</title>
+  </head>
+  <body class="">
+    <div class="container w-full flex items-center justify-center p-4">
+      <div
+        class="game bg-slate-800 w-full max-w-xl rounded-2xl p-4 md:p-8 grid shadow-2xl absolute top-2/4 left-2/4"
+      >
+        <div class="selectors flex flex-row absolute gap-2">
+          <div class="selector" data-col="1"></div>
+          <div class="selector" data-col="2"></div>
+          <div class="selector" data-col="3"></div>
+          <div class="selector" data-col="4">
+            <span class="coin"></span>
+          </div>
+          <div class="selector" data-col="5"></div>
+          <div class="selector" data-col="6"></div>
+          <div class="selector" data-col="7"></div>
+        </div>
+      </div>
+    </div>
+    <button class="reset">
+      <i class="fas fa-redo-alt"></i>
+    </button>
+    <script src="main.js"></script>
+  </body>
+</html>
