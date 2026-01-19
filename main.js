@@ -26,7 +26,7 @@ class connectFour {
   }
   eventsSetter() {
     this.ui.selectors.forEach((selector) => {
-      selector.addEventListener("mouseenter", () => {
+      selector.addEventListener("click", () => {
         selector.appendChild(this.ui.coin);
       });
     });
